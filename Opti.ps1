@@ -41,6 +41,10 @@ $script:ConfigFile  = Join-Path $script:Root 'config.json'
 $script:BackupDir   = Join-Path ([Environment]::GetFolderPath('MyDocuments')) 'BackupOpti'
 $script:Version     = '1.4.0'
 
+# folder data lokal harus ada sebelum menulis config (mode irm | iex memakai
+# %LOCALAPPDATA%\Opti yang belum tentu ada di mesin baru)
+if (-not (Test-Path -LiteralPath $script:Root)) { New-Item -ItemType Directory -Path $script:Root -Force | Out-Null }
+
 if (-not (Test-Path -LiteralPath $script:BackupDir)) { New-Item -ItemType Directory -Path $script:BackupDir -Force | Out-Null }
 
 # ------------------------------------------------------------- admin check ----
@@ -159,6 +163,7 @@ function Get-OptiConfig {
 
 function Save-OptiConfig {
     param($Config)
+    if (-not (Test-Path -LiteralPath $script:Root)) { New-Item -ItemType Directory -Path $script:Root -Force | Out-Null }
     $Config | ConvertTo-Json | Set-Content -LiteralPath $script:ConfigFile -Encoding UTF8
 }
 
