@@ -35,7 +35,7 @@ powershell -ExecutionPolicy Bypass -File "E:\Code\H.MP Dev\Opti\Opti.ps1"
 - Tanpa izin admin, beberapa fitur (kosongkan RAM, ubah layanan) tidak akan
   bekerja. Opti akan menampilkan peringatan.
 
-**Cara 3 - Satu baris dari internet (seperti `irm christitus.com/win | iex`):**
+**Cara 3 - Satu baris dari internet**
 ```
 irm https://raw.githubusercontent.com/HMPoetra/Opti/main/Opti.ps1 | iex
 ```
