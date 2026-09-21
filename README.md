@@ -2,6 +2,13 @@
 
 **Copyright (c) H.MP Dev**  |  Pusat Developer: **https://hmp.my.id**
 
+## Description (350 karakter)
+
+OPTI adalah aplikasi optimalisasi kinerja PC Windows untuk mematikan layanan useless, membersihkan cache & Temp, mengosongkan RAM standby list via API sistem, dan menerapkan optimasi registry. Semua perubahan otomatis dicadangkan lalu dipulihkan. 100% offline tanpa telemetri, wajib dijalankan sebagai Administrator. Versi 1.4.0 lolos uji menyeluruh.
+
+> Teks di atas adalah satu paragraf deskripsi (350 karakter) yang bisa dipakai
+> sebagai bio aplikasi / submit deskripsi di toko atau repositori.
+
 ## Fitur
 
 1. **Terms & Policy** - Wajib disetujui sebelum aplikasi berjalan. Jika tidak
@@ -102,6 +109,7 @@ registry) diuji pada folder/isian sintetis di folder TEMP.
 | 19 | Kompilasi komponen RAM (C# native) | `PASS` | API termuat, diagnosa berfungsi |
 | 20 | Konten ASCII-only | `PASS` | 0 byte non-ASCII (aman PS 5.1) |
 | 21 | Tidak ada sisa "RAMMap" | `PASS` | Fitur/label RAMMap dihapus total |
+| 22 | Persistensi config mode `irm | iex` (folder baru) | `PASS` | Folder `%LOCALAPPDATA%\Opti\` + `config.json` dibuat otomatis, roundtrip OK |
 
 ### Bug yang ditemukan & diperbaiki selama pengujian
 
@@ -113,6 +121,7 @@ registry) diuji pada folder/isian sintetis di folder TEMP.
 | 4 | `Get-OptiRamInfo`: crash bila `Win32_OperatingSystem` gagal | Ditambah guard bila hasil null |
 | 5 | Tombol RAM tanpa proteksi error | Dibungkus try/catch + pesan error |
 | 6 | Versi | Dinaikkan 1.3.0 -> 1.4.0 |
+| 7 | Mode `irm | iex`: crash "Could not find a part of the path ... config.json" | Folder `%LOCALAPPDATA%\Opti\` dibuat otomatis; `Save-OptiConfig` diproteksi membuat folder bila hilang |
 
 ## Catatan Keamanan
 
